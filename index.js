@@ -18,7 +18,7 @@ module.exports = function (C, r) {
         var ind = randint(0, n-i-1);
         // any equal or smaller index we've already used requires the addition of 1 to adjust this index
         ind += selectionIndices
-               .map(function(i){return i>=ind;})
+               .map(function(i){return i<=ind;})
                .reduce(function(m,o){return m+o;},0);
         selectionIndices.push(ind);
         selection.push(C[ind]);
