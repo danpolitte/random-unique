@@ -3,26 +3,25 @@
 var randint = require('random-integer');
 
 /*
- * Selects r unique items from an array
+ * Selects r unique items from an array. Based on Robert Floyd's algorithm as
+ * described at http://www.nowherenearithaca.com/2013/05/robert-floyds-tiny-and-beautiful.html
  */
 module.exports = function (C, r) {
     var n = C.length;
     
     if(r==n) return C;
     if(r>n) return C; // might be the wrong call. Error instead?
-    
-    var selection = [];
     var selectionIndices = [];
     
-    for(var i=0; i<r; ++i) {
-        var ind = randint(0, n-i-1);
-        // any equal or smaller index we've already used requires the addition of 1 to adjust this index
-        ind += selectionIndices
-               .map(function(i){return i<=ind;})
-               .reduce(function(m,o){return m+o;},0);
-        selectionIndices.push(ind);
-        selection.push(C[ind]);
+    for(var j=n-r; j<n; ++j) {
+        var t = randint(0, j);
+        if(selectionIndices.some(function(i){return i==t})) { // if t in selectionIndices
+            selectionIndices.push(t);
+        } else {
+            selectionIndices.push(j);
+        }
     }
     
-    return selection;
+    
+    return selectionIndices.map(function(i){return C[i];});
 }
