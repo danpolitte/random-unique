@@ -1,0 +1,27 @@
+{
+  "name": "random-unique",
+  "version": "0.1.0",
+  "description": "A node module to create a random selection of unique elements from a collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://danpolitte@github.com/danpolitte/random-unique.git"
+  },
+  "keywords": [
+    "random",
+    "unique",
+    "sample"
+  ],
+  "author": "Daniel Politte",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/danpolitte/random-unique/issues"
+  },
+  "homepage": "https://github.com/danpolitte/random-unique",
+  "dependencies": {
+    "random-integer": "^1.0.1"
+  }
+}
