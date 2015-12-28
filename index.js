@@ -13,15 +13,14 @@ module.exports = function (C, r) {
     if(r>n) return C; // might be the wrong call. Error instead?
     var selectionIndices = [];
     
-    for(var j=n-r; j<n; ++j) {
-        var t = randint(0, j);
-        if(selectionIndices.some(function(i){return i==t})) { // if t in selectionIndices
-            selectionIndices.push(t);
-        } else {
+    for(var j=n-r+1; j<=n; ++j) {
+        var t = randint(1, j);
+        if(selectionIndices.some(function(i){return i==t;})) { // if t in selectionIndices
             selectionIndices.push(j);
+        } else {
+            selectionIndices.push(t);
         }
     }
     
-    
-    return selectionIndices.map(function(i){return C[i];});
+    return selectionIndices.map(function(i){return C[i-1];});
 }
